@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mmsq" />
+        <module name="ydtsg" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mmsq" options="-extdirs D:\2020-09-21\基于Android的移动图书管理系统\后台\ydtsg/src/main/webapp/WEB-INF/lib" />
+      <module name="ydtsg" options="-extdirs E:\linshi\ydtsg/src/main/webapp/WEB-INF/lib" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>图书添加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${ctx}/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="${ctx}/resources/css/font_eolqem241z66flxr.css"
+          media="all"/>
+</head>
+<body class="childrenBody">
+
+<div class="layui-form-item" style="margin-top: 20px">
+    <label class="layui-form-label">图片</label>
+    <div class="layui-input-block">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn" id="test1">上传图片</button>
+            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                预览图：
+                <div class="layui-upload-list" id="demo1"></div>
+            </blockquote>
+        </div>
+    </div>
+</div>
+
+<div class="layui-form-item" style="margin-top: 20px">
+    <label class="layui-form-label">txt文件</label>
+    <div class="layui-input-block">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn" id="test2">选择文件</button>
+            <div class="layui-progress" lay-showpercent="true" lay-filter="videoprogress" style="margin-top: 6px;">
+                <div class="layui-progress-bar" lay-percent="1%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="layui-form" lay-filter="formtable">
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block xb-width">
+            <input type="text" name="name" class="layui-input"
+                   lay-verify="required" placeholder="请输入">
+            <input type="hidden" name="id" id="id">
+            <input type="hidden" name="pics" id="pics">
+            <input type="hidden" name="fj" id="fj">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类</label>
+        <div class="layui-input-block xb-width">
+            <select name="type">
+                <%for(c in list ){%>
+                <option value="${c.name}">${c.name}</option>
+                <%}%>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">作者</label>
+        <div class="layui-input-block xb-width">
+            <input type="text" name="zz" class="layui-input"
+                   lay-verify="required" placeholder="请输入">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">出版社</label>
+        <div class="layui-input-block xb-width">
+            <input type="text" name="cbs" class="layui-input"
+                   lay-verify="required" placeholder="请输入">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block ">
+            <textarea placeholder="请输入内容" name="content" id="content" rows="10" cols="40"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="adddd">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
+<script type="text/javascript" id="addjs"
+        src="${ctx}/pages/Product/add.js?ctx=${ctx}&&id=${id!''}"></script>
+</body>
+</html>

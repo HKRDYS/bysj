@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>mmsq</groupId>
+  <artifactId>mmsq</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <!-- 集中定义依赖版本号 -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jfinal.version>3.2</jfinal.version>
+    <junit.version>4.12</junit.version>
+  </properties>
+
+  <!--集中声明依赖-->
+  <dependencies>
+    <!--单元测试-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <!--<version>${junit.version}</version>-->
+      <!-- 4.1.12在Java8上莫名更稳定，其它不知道 -->
+      <version>4.12</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.49</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibeetl</groupId>
+      <artifactId>beetl</artifactId>
+      <version>2.8.6</version>
+    </dependency>
+    <!--jfinal依赖-->
+    <dependency>
+      <groupId>com.jfinal</groupId>
+      <artifactId>jfinal</artifactId>
+      <version>${jfinal.version}</version>
+    </dependency>
+    <!--MySQL数据驱动-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.27</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!--数据库需要包end-->
+    <!--链接池-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.jfinal</groupId>
+      <artifactId>cos</artifactId>
+      <version>26Dec2008</version>
+    </dependency>
+    <!--链接池-->
+    <!--jetty-->
+    <dependency>
+      <groupId>com.jfinal</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>8.1.8</version>
+      <!--
+          打 war 包时需要改成 provided，以免将一些无用的 jar 打进去
+          CSDN上查的...
+      -->
+      <scope>compile</scope>
+    </dependency>
+    <!--jetty-->
+    <!--log4j-->
+    <!-- 一个服务器日志文件，其实在大型服务器上会更有用 -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.9.1</version>
+    </dependency>
+    <!--log4j-->
+
+  </dependencies>
+
+  <!--定义编译相关内容-->
+  <build>
+    <!--定义编译后的包名-->
+    <finalName>${project.artifactId}</finalName>
+
+    <!--此标签下的是将要加载的插件-->
+    <plugins>
+
+      <!-- 资源文件拷贝插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- java编译插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArguments>
+            <extdirs>${basedir}/src/main/webapp/WEB-INF/lib</extdirs>
+          </compilerArguments>
+        </configuration>
+      </plugin>
+    </plugins>
+
+
+    <pluginManagement>
+      <plugins>
+        <!-- 配置Tomcat插件 -->
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <!--配置端口号-->
+            <port>8080</port>
+            <!--配置访问路径，此处配置为根目录，即http://localhost/-->
+            <path>/</path>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
